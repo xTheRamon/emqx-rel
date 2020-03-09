@@ -101,12 +101,6 @@ spec:
             subPath: "emqx.lic"
             readOnly: true
           {{ end }}
-          readinessProbe:
-            httpGet:
-              path: /status
-              port: {{ .Values.emqxConfig.EMQX_MANAGEMENT__LISTENER__HTTP | default 8081 }}
-            initialDelaySeconds: 5
-            periodSeconds: 5
     {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
